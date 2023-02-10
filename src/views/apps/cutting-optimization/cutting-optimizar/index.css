@@ -1,0 +1,61 @@
+.row-height {
+    height: 350px;
+    border: 1px solid rgb(129, 129, 129);
+}
+.overflow {
+    overflow-y: scroll;
+}
+.table-height {
+    height: 200px;
+    overflow-y: scroll;
+}
+.result-table-height {
+    height: 50px;
+}
+.cutted-section {
+    border: 1px solid rgb(82, 79, 79);
+}
+.picec-table {
+    margin: 5px;
+    color: black;
+}
+.tr {
+    border-bottom: 1px solid rgb(158, 157, 157);
+    border-top: 1px solid rgb(158, 157, 157);
+    border-right: 1px solid rgb(158, 157, 157);
+}
+.td  {
+    border-right: 1px solid rgb(158, 157, 157);
+    border-left: 1px solid rgb(158, 157, 157);
+    padding-right: 1px;
+    padding-left: 1px;
+    font-size: 11px!important;
+}
+.button-section {
+    margin: 5px;
+    display: flex;
+}
+.input-field {
+    border: none!important;
+    background-color:rgb(247, 247, 247);
+    height: 24px!important;
+    width: 70px!important;
+    font-size: 11px!important;
+    text-align: left;
+}
+.dropdown-field {
+    border: none!important;
+    background-color:rgb(247, 247, 247);
+    height: 24px!important;
+    width: 80px!important;
+    font-size: 11px!important;
+    text-align: left;
+}
+.remove-td {
+    height: 20px!important;
+    cursor: pointer;
+}
+.pieces {
+    padding-top: 5px;
+    padding-right: 5px;
+}

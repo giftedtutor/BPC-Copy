@@ -1,0 +1,123 @@
+{
+	"solution": {
+		"totalRequiredStocks": 7,
+		"requiredStocks": [
+			{
+				"index": 0,
+				"length": "6000",
+				"width": "100",
+				"count": 1
+			},
+			{
+				"index": 1,
+				"length": "5800",
+				"width": "100",
+				"count": 3
+			},
+			{
+				"index": 1,
+				"length": "5900",
+				"width": "100",
+				"count": 3
+			}
+		],
+		"layouts": [
+			{
+				"count": 1,
+				"stock": {
+					"index": 0,
+					"length": "6000",
+					"width": "100"
+				},
+				"panels": [
+					{
+						"index": 1,
+						"length": "2000",
+						"width": "100",
+						"x": "0",
+						"y": "0"
+					},
+					{
+						"index": 0,
+						"length": "2000",
+						"width": "100",
+						"x": "2000",
+						"y": "0"
+					}
+				],
+				"remainders": [
+					{
+						"length": "2000",
+						"width": "100",
+						"x": "4000",
+						"y": "0"
+					}
+				]
+			},
+			{
+				"count": 3,
+				"stock": {
+					"index": 1,
+					"length": "5800",
+					"width": "100"
+				},
+				"panels": [
+					{
+						"index": 0,
+						"length": "1000",
+						"width": "100",
+						"x": "0",
+						"y": "0"
+					},
+					{
+						"index": 0,
+						"length": "1000",
+						"width": "100",
+						"x": "1000",
+						"y": "0"
+					}
+				],
+				"remainders": [
+					{
+						"length": "2800",
+						"width": "100",
+						"x": "2000",
+						"y": "0"
+					}
+				]
+			},
+			{
+				"count": 3,
+				"stock": {
+					"index": 1,
+					"length": "5900",
+					"width": "100"
+				},
+				"panels": [
+					{
+						"index": 0,
+						"length": "1000",
+						"width": "100",
+						"x": "0",
+						"y": "0"
+					},
+					{
+						"index": 0,
+						"length": "1000",
+						"width": "100",
+						"x": "1000",
+						"y": "0"
+					}
+				],
+				"remainders": [
+					{
+						"length": "2900",
+						"width": "100",
+						"x": "2000",
+						"y": "0"
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,191 @@
+.window__items {
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+}
+
+.openable__window__right {
+    border: 6px solid #90EE90;
+    width: 50%;
+    border-left: none;
+}
+
+.openable__window__left {
+    border: 6px solid #90EE90;
+    width: 50%;
+    border-right: none;
+}
+
+.openable__panels {
+    margin-top: 50px;
+}
+
+.size_text {
+    font-size: 14px;
+    overflow-wrap: break-word;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Second Approach */
+.window__main {
+    height: 720px;
+    width: 560px;
+}
+
+.display__windows {
+    height: 400px;
+    width: 560px;
+}
+
+.windows__header {
+    height: 250px;
+}
+
+.top__buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.openable__options {
+    display: flex;
+}
+
+.select__options {
+    padding: 8px;
+}
+
+.openable__options {
+    margin-top: 10px;
+}
+
+.dropDown {
+    cursor: pointer;
+}
+
+.dropDownMenu {
+    position: absolute;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-top: 40px;
+    background-color: #fff;
+    right: 510px;
+    z-index: 999;
+}
+
+.menu__item {
+    cursor: pointer;
+    height: 25px;
+    margin-top: 3px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.menu__item:hover {
+    background-color: #d3d3d3;
+}
+
+.newDropDown {
+    cursor: pointer;
+}
+
+.newMenu {
+    position: absolute;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-top: 40px;
+    background-color: #fff;
+    right: 360px;
+    z-index: 999;
+}
+
+.thirdDropDown {
+    cursor: pointer;
+}
+
+.thirdMenu {
+    position: absolute;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-top: 10px;
+    background-color: #fff;
+    right: 460px;
+}
+
+.mulDropDown {
+    cursor: pointer;
+}
+
+.mul__menu {
+    position: absolute;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-top: 10px;
+    background-color: #fff;
+    right: 540px;
+    z-index: 999;
+}
+
+.dis__panel__size {
+    display: flex;
+}
+
+.panel__title {
+    font-weight: 700;
+}
+
+.panel__size {
+    margin-left: 10px;
+}
+
+.sliding__menu {
+    cursor: pointer;
+}
+
+.slide__Menu {
+    position: absolute;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-top: 120px;
+    background-color: #fff;
+    right: 420px;
+    z-index: 999;
+}
+
+.sash__menu {
+    position: absolute;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-top: 120px;
+    background-color: #fff;
+    right: 470px;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.draw__sash__menu {
+    position: absolute;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-top: 40px;
+    background-color: #fff;
+    right: 40px;
+    z-index: 999;
+}
+
+.img-style {
+    height: 100%;
+    width: 90%;
+}
+
+.mullian__btns {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: space-around;
+}
