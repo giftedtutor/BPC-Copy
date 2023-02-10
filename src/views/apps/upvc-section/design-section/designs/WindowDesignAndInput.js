@@ -305,6 +305,7 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
   const [triangle, setTriangle] = useState('')
   const [panelImages, setPanelImages] = useState([])
   const [totalDividers, setTotalDividers] = useState(0)
+const [isWintech, setIsWintech] = useState(false)
 
   const addGlassImage = () => {
     const newImage = {
@@ -6992,8 +6993,8 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
       topProfileType,
       topBeading,
       categoryShape,
-      // dividerForDoor: (addFormData.panelLeaf === '3436' || addFormData.panelLeaf === '3697') ? 1 : totalDividers + 1,
-      dividerForDoor: totalDividers, // totalDividers + 1,
+      dividerForDoor: (addFormData?.panelLeaf === '3436' || addFormData?.panelLeaf === '3697') ? 1 : 0,
+      // dividerForDoor: totalDividers + 1,
       doorPanelSize: Number(addFormData.panelLeaf),
       topProfileType,
       pType: {
@@ -7065,6 +7066,10 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
     setOpenableTopHungs(0)
     setFixedTopHungs(0)
     setTotalTopHungs(0)
+    // setHeight(0)
+    // setWidth(0)
+    setTopHungHeight(0)
+    setGlassHeight(0)
     setWtype('')
     setWidth('')
     setHeight('')
@@ -7392,6 +7397,12 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
                     handleAddFormChange(e)
                     setProfileType(e.target.value)
                     listCoastingItems(e.target.value)
+                    if (e.target.value === "6") {
+                      setIsWintech(true)
+                    } else {
+                      setIsWintech(false)
+                    }
+                    
                   }}
 
                   className="custom-select"
@@ -7413,6 +7424,31 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
                 </select>
               </div>
 
+              {/* {
+                isWintech === true ? (
+                  <div className="form-group col-md-3">
+                  <label>Wintech Type </label>
+                  <select
+                    onChange={(e) => {
+                      handleAddFormChange(e)
+                      setProfileType(e.target.value)
+                      listCoastingItems(e.target.value)
+                    }}
+  
+                    className="custom-select"
+                    name="profileType"
+                    id="profile-type"
+                    required
+                    value={addFormData.profileType}
+                  >
+                    <option selected value>Select option</option>
+                    <option value="6">WHITE</option>
+                    <option value="10">BROWN</option>
+                  </select>
+                </div>
+                ) : ''
+              } */}
+
               <div className="form-group col-md-3">
                 <label>Panel/Leaf</label>
                 {wType === 'DOOR' || wType === 'DDOOR' ? (<>
@@ -7433,7 +7469,7 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
                     value={addFormData.panelLeaf}
                   >
                     <option selected value>Select option</option>
-                    <option value="3436">Door Panel 110</option>
+                    <option value="3436">Door Panel 100</option>
                     <option value="3697">Door Panel 150</option>
                   </select> </>) : (
                   <>
@@ -7793,7 +7829,7 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
                                 (drawTwo === 'Left' || drawTwo === 'Right' || drawTwo === 'Up' || drawTwo === 'Down' || drawTwo === 'leftAndRight' || drawTwo === 'UpwardAndLeft' || drawTwo === 'UpwardAndRight' || drawTwo === 'DownwardAndLeft' || drawTwo === 'DownwardAndRight' || drawTwo === 'All' || drawTwo === 'tiltDesign' || drawTwo === 'tiltUp') ||
                                 (drawThree === 'Left' || drawThree === 'Right' || drawThree === 'Up' || drawThree === 'Down' || drawThree === 'leftAndRight' || drawThree === 'UpwardAndLeft' || drawThree === 'UpwardAndRight' || drawThree === 'DownwardAndLeft' || drawThree === 'DownwardAndRight' || drawThree === 'All' || drawThree === 'tiltDesign' || drawThree === 'tiltUp') ||
                                 (drawFour === 'Left' || drawFour === 'Right' || drawFour === 'Up' || drawFour === 'Down' || drawFour === 'leftAndRight' || drawFour === 'UpwardAndLeft' || drawFour === 'UpwardAndRight' || drawFour === 'DownwardAndLeft' || drawFour === 'DownwardAndRight' || drawFour === 'All' || drawFour === 'tiltDesign' || drawFour === 'tiltUp') ||
-                                (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3679'>35mm</option> : <option value='3678'>25mm</option>
+                                (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3679'>OP/Fix SG</option> : <option value='3678'>SL SG</option>
                             }
                           </>
                         ) : ''
@@ -7807,7 +7843,7 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
                                 (drawTwo === 'Left' || drawTwo === 'Right' || drawTwo === 'Up' || drawTwo === 'Down' || drawTwo === 'leftAndRight' || drawTwo === 'UpwardAndLeft' || drawTwo === 'UpwardAndRight' || drawTwo === 'DownwardAndLeft' || drawTwo === 'DownwardAndRight' || drawTwo === 'All' || drawTwo === 'tiltDesign' || drawTwo === 'tiltUp') ||
                                 (drawThree === 'Left' || drawThree === 'Right' || drawThree === 'Up' || drawThree === 'Down' || drawThree === 'leftAndRight' || drawThree === 'UpwardAndLeft' || drawThree === 'UpwardAndRight' || drawThree === 'DownwardAndLeft' || drawThree === 'DownwardAndRight' || drawThree === 'All' || drawThree === 'tiltDesign' || drawThree === 'tiltUp') ||
                                 (drawFour === 'Left' || drawFour === 'Right' || drawFour === 'Up' || drawFour === 'Down' || drawFour === 'leftAndRight' || drawFour === 'UpwardAndLeft' || drawFour === 'UpwardAndRight' || drawFour === 'DownwardAndLeft' || drawFour === 'DownwardAndRight' || drawFour === 'All' || drawFour === 'tiltDesign' || drawFour === 'tiltUp') ||
-                                (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3681'>19mm</option> : <option value='3680'>08mm</option>
+                                (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3681'>OP/Fix DG</option> : <option value='3680'>SL DG</option>
                             }
                           </>
                         ) : ''
@@ -7840,7 +7876,7 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
                                   (drawTwo === 'Left' || drawTwo === 'Right' || drawTwo === 'Up' || drawTwo === 'Down' || drawTwo === 'leftAndRight' || drawTwo === 'UpwardAndLeft' || drawTwo === 'UpwardAndRight' || drawTwo === 'DownwardAndLeft' || drawTwo === 'DownwardAndRight' || drawTwo === 'All' || drawTwo === 'tiltDesign' || drawTwo === 'tiltUp') ||
                                   (drawThree === 'Left' || drawThree === 'Right' || drawThree === 'Up' || drawThree === 'Down' || drawThree === 'leftAndRight' || drawThree === 'UpwardAndLeft' || drawThree === 'UpwardAndRight' || drawThree === 'DownwardAndLeft' || drawThree === 'DownwardAndRight' || drawThree === 'All' || drawThree === 'tiltDesign' || drawThree === 'tiltUp') ||
                                   (drawFour === 'Left' || drawFour === 'Right' || drawFour === 'Up' || drawFour === 'Down' || drawFour === 'leftAndRight' || drawFour === 'UpwardAndLeft' || drawFour === 'UpwardAndRight' || drawFour === 'DownwardAndLeft' || drawFour === 'DownwardAndRight' || drawFour === 'All' || drawFour === 'tiltDesign' || drawFour === 'tiltUp') ||
-                                  (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3682'>45mm</option> : <option value='3683'>25mm</option>
+                                  (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3682'>45mm</option> : <option value='3683'>SL SG</option>
                               }
                             </>
                           ) : ''
@@ -7854,7 +7890,7 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
                                   (drawTwo === 'Left' || drawTwo === 'Right' || drawTwo === 'Up' || drawTwo === 'Down' || drawTwo === 'leftAndRight' || drawTwo === 'UpwardAndLeft' || drawTwo === 'UpwardAndRight' || drawTwo === 'DownwardAndLeft' || drawTwo === 'DownwardAndRight' || drawTwo === 'All' || drawTwo === 'tiltDesign' || drawTwo === 'tiltUp') ||
                                   (drawThree === 'Left' || drawThree === 'Right' || drawThree === 'Up' || drawThree === 'Down' || drawThree === 'leftAndRight' || drawThree === 'UpwardAndLeft' || drawThree === 'UpwardAndRight' || drawThree === 'DownwardAndLeft' || drawThree === 'DownwardAndRight' || drawThree === 'All' || drawThree === 'tiltDesign' || drawThree === 'tiltUp') ||
                                   (drawFour === 'Left' || drawFour === 'Right' || drawFour === 'Up' || drawFour === 'Down' || drawFour === 'leftAndRight' || drawFour === 'UpwardAndLeft' || drawFour === 'UpwardAndRight' || drawFour === 'DownwardAndLeft' || drawFour === 'DownwardAndRight' || drawFour === 'All' || drawFour === 'tiltDesign' || drawFour === 'tiltUp') ||
-                                  (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3684'>35mm</option> : <option value='3685'>08mm</option>
+                                  (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3684'>OP/Fix SG</option> : <option value='3685'>SL DG</option>
                               }
                             </>
                           ) : ''
@@ -7985,7 +8021,7 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
                                 (drawTwo === 'Left' || drawTwo === 'Right' || drawTwo === 'Up' || drawTwo === 'Down' || drawTwo === 'leftAndRight' || drawTwo === 'UpwardAndLeft' || drawTwo === 'UpwardAndRight' || drawTwo === 'DownwardAndLeft' || drawTwo === 'DownwardAndRight' || drawTwo === 'All' || drawTwo === 'tiltDesign' || drawTwo === 'tiltUp') ||
                                 (drawThree === 'Left' || drawThree === 'Right' || drawThree === 'Up' || drawThree === 'Down' || drawThree === 'leftAndRight' || drawThree === 'UpwardAndLeft' || drawThree === 'UpwardAndRight' || drawThree === 'DownwardAndLeft' || drawThree === 'DownwardAndRight' || drawThree === 'All' || drawThree === 'tiltDesign' || drawThree === 'tiltUp') ||
                                 (drawFour === 'Left' || drawFour === 'Right' || drawFour === 'Up' || drawFour === 'Down' || drawFour === 'leftAndRight' || drawFour === 'UpwardAndLeft' || drawFour === 'UpwardAndRight' || drawFour === 'DownwardAndLeft' || drawFour === 'DownwardAndRight' || drawFour === 'All' || drawFour === 'tiltDesign' || drawFour === 'tiltUp') ||
-                                (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3679'>35mm</option> : <option value='3678'>25mm</option>
+                                (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3679'>OP/Fix SG</option> : <option value='3678'>SL SG</option>
                             }
                           </>
                         ) : ''
@@ -7999,7 +8035,7 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
                                 (drawTwo === 'Left' || drawTwo === 'Right' || drawTwo === 'Up' || drawTwo === 'Down' || drawTwo === 'leftAndRight' || drawTwo === 'UpwardAndLeft' || drawTwo === 'UpwardAndRight' || drawTwo === 'DownwardAndLeft' || drawTwo === 'DownwardAndRight' || drawTwo === 'All' || drawTwo === 'tiltDesign' || drawTwo === 'tiltUp') ||
                                 (drawThree === 'Left' || drawThree === 'Right' || drawThree === 'Up' || drawThree === 'Down' || drawThree === 'leftAndRight' || drawThree === 'UpwardAndLeft' || drawThree === 'UpwardAndRight' || drawThree === 'DownwardAndLeft' || drawThree === 'DownwardAndRight' || drawThree === 'All' || drawThree === 'tiltDesign' || drawThree === 'tiltUp') ||
                                 (drawFour === 'Left' || drawFour === 'Right' || drawFour === 'Up' || drawFour === 'Down' || drawFour === 'leftAndRight' || drawFour === 'UpwardAndLeft' || drawFour === 'UpwardAndRight' || drawFour === 'DownwardAndLeft' || drawFour === 'DownwardAndRight' || drawFour === 'All' || drawFour === 'tiltDesign' || drawFour === 'tiltUp') ||
-                                (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3681'>19mm</option> : <option value='3680'>08mm</option>
+                                (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3681'>OP/Fix DG</option> : <option value='3680'>SL DG</option>
                             }
                           </>
                         ) : ''
@@ -8032,7 +8068,7 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
                                   (drawTwo === 'Left' || drawTwo === 'Right' || drawTwo === 'Up' || drawTwo === 'Down' || drawTwo === 'leftAndRight' || drawTwo === 'UpwardAndLeft' || drawTwo === 'UpwardAndRight' || drawTwo === 'DownwardAndLeft' || drawTwo === 'DownwardAndRight' || drawTwo === 'All' || drawTwo === 'tiltDesign' || drawTwo === 'tiltUp') ||
                                   (drawThree === 'Left' || drawThree === 'Right' || drawThree === 'Up' || drawThree === 'Down' || drawThree === 'leftAndRight' || drawThree === 'UpwardAndLeft' || drawThree === 'UpwardAndRight' || drawThree === 'DownwardAndLeft' || drawThree === 'DownwardAndRight' || drawThree === 'All' || drawThree === 'tiltDesign' || drawThree === 'tiltUp') ||
                                   (drawFour === 'Left' || drawFour === 'Right' || drawFour === 'Up' || drawFour === 'Down' || drawFour === 'leftAndRight' || drawFour === 'UpwardAndLeft' || drawFour === 'UpwardAndRight' || drawFour === 'DownwardAndLeft' || drawFour === 'DownwardAndRight' || drawFour === 'All' || drawFour === 'tiltDesign' || drawFour === 'tiltUp') ||
-                                  (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3682'>45mm</option> : <option value='3683'>25mm</option>
+                                  (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3682'>45mm</option> : <option value='3683'>SL SG</option>
                               }
                             </>
                           ) : ''
@@ -8046,7 +8082,7 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
                                   (drawTwo === 'Left' || drawTwo === 'Right' || drawTwo === 'Up' || drawTwo === 'Down' || drawTwo === 'leftAndRight' || drawTwo === 'UpwardAndLeft' || drawTwo === 'UpwardAndRight' || drawTwo === 'DownwardAndLeft' || drawTwo === 'DownwardAndRight' || drawTwo === 'All' || drawTwo === 'tiltDesign' || drawTwo === 'tiltUp') ||
                                   (drawThree === 'Left' || drawThree === 'Right' || drawThree === 'Up' || drawThree === 'Down' || drawThree === 'leftAndRight' || drawThree === 'UpwardAndLeft' || drawThree === 'UpwardAndRight' || drawThree === 'DownwardAndLeft' || drawThree === 'DownwardAndRight' || drawThree === 'All' || drawThree === 'tiltDesign' || drawThree === 'tiltUp') ||
                                   (drawFour === 'Left' || drawFour === 'Right' || drawFour === 'Up' || drawFour === 'Down' || drawFour === 'leftAndRight' || drawFour === 'UpwardAndLeft' || drawFour === 'UpwardAndRight' || drawFour === 'DownwardAndLeft' || drawFour === 'DownwardAndRight' || drawFour === 'All' || drawFour === 'tiltDesign' || drawFour === 'tiltUp') ||
-                                  (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3684'>35mm</option> : <option value='3685'>08mm</option>
+                                  (drawFive === 'Left' || drawFive === 'Right' || drawFive === 'Up' || drawFive === 'Down' || drawFive === 'leftAndRight' || drawFive === 'UpwardAndLeft' || drawFive === 'UpwardAndRight' || drawFive === 'DownwardAndLeft' || drawFive === 'DownwardAndRight' || drawFive === 'All' || drawFive === 'tiltDesign' || drawFive === 'tiltUp')))) ? <option value='3684'>OP/Fix SG</option> : <option value='3685'>SL DG</option>
                               }
                             </>
                           ) : ''
@@ -8110,7 +8146,7 @@ const AddNewModal = React.forwardRef(({ open, handleModal }) => {
                       <option>Select Option</option>
                       <option>10mm</option>
                       <option>12mm</option>
-                      <option>08mm</option>
+                      <option>SL DG</option>
                       <option>06mm</option>
                     </select>
                   </div>

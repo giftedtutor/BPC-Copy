@@ -115,6 +115,7 @@ const ViewProject = () => {
           Beading,
           multiLockingSystem,
           profileType,
+          dividerForDoor,
 
           totalNumberOfPanels,
           numberOfOpenablePanels,
@@ -181,7 +182,7 @@ const ViewProject = () => {
           beading: Beading,
           multiLockingSystem,
           profileType,
-
+          dividerForDoor,
           totalNumberOfPanels,
           numberOfOpenablePanels,
           numberOfFixedPanels,
@@ -348,7 +349,8 @@ const ViewProject = () => {
       categoryShape: rows[idx].categoryShape,
       topPType: rows[idx].topPType,
       label: rows[idx].label,
-      doorPanelSize: rows[idx].doorPanelSize
+      doorPanelSize: rows[idx].doorPanelSize,
+       dividerForDoor: rows[idx].dividerForDoor
     }
 
     setRows(rowss)
@@ -432,7 +434,8 @@ const ViewProject = () => {
       categoryShape: rows[idx].categoryShape,
       topPType: rows[idx].topPType,
       label: rows[idx].label,
-      doorPanelSize: rows[idx].doorPanelSize
+      doorPanelSize: rows[idx].doorPanelSize,
+       dividerForDoor: rows[idx].dividerForDoor
     }
     setRows(rowss)
     localStorage.setItem('InputAllDataBPC', JSON.stringify(rowss))
@@ -510,7 +513,8 @@ const ViewProject = () => {
       categoryShape: rows[idx].categoryShape,
       topPType: rows[idx].topPType,
       label: rows[idx].label,
-      doorPanelSize: rows[idx].doorPanelSize
+      doorPanelSize: rows[idx].doorPanelSize,
+       dividerForDoor: rows[idx].dividerForDoor
     }
 
     setRows(rowss)
@@ -591,7 +595,8 @@ const ViewProject = () => {
       categoryShape: rows[idx].categoryShape,
       topPType: rows[idx].topPType,
       label: rows[idx].label,
-      doorPanelSize: rows[idx].doorPanelSize
+      doorPanelSize: rows[idx].doorPanelSize,
+       dividerForDoor: rows[idx].dividerForDoor
     }
 
     setRows(rowss)
@@ -670,7 +675,8 @@ const ViewProject = () => {
       categoryShape: rows[idx].categoryShape,
       topPType: rows[idx].topPType,
       label: rows[idx].label,
-      doorPanelSize: rows[idx].doorPanelSize
+      doorPanelSize: rows[idx].doorPanelSize,
+       dividerForDoor: rows[idx].dividerForDoor
     }
 
     setRows(rowss)
@@ -748,7 +754,8 @@ const ViewProject = () => {
       categoryShape: rows[idx].categoryShape,
       topPType: rows[idx].topPType,
       label: rows[idx].label,
-      doorPanelSize: rows[idx].doorPanelSize
+      doorPanelSize: rows[idx].doorPanelSize,
+       dividerForDoor: rows[idx].dividerForDoor
     }
 
     setRows(rowss)
@@ -904,7 +911,8 @@ const ViewProject = () => {
       categoryShape: rows[idx].categoryShape,
       topPType: rows[idx].topPType,
       label: rows[idx].label,
-      doorPanelSize: rows[idx].doorPanelSize
+      doorPanelSize: rows[idx].doorPanelSize,
+       dividerForDoor: rows[idx].dividerForDoor
     }
 
     setRows(rowss)
@@ -983,7 +991,8 @@ const ViewProject = () => {
       categoryShape: rows[idx].categoryShape,
       topPType: rows[idx].topPType,
       label: rows[idx].label,
-      doorPanelSize: rows[idx].doorPanelSize
+      doorPanelSize: rows[idx].doorPanelSize,
+       dividerForDoor: rows[idx].dividerForDoor
     }
 
     setRows(rowss)
@@ -1063,7 +1072,8 @@ const ViewProject = () => {
       categoryShape: rows[idx].categoryShape,
       topPType: rows[idx].topPType,
       label: rows[idx].label,
-      doorPanelSize: rows[idx].doorPanelSize
+      doorPanelSize: rows[idx].doorPanelSize,
+       dividerForDoor: rows[idx].dividerForDoor
     }
 
     setRows(rowss)
@@ -1143,7 +1153,8 @@ const ViewProject = () => {
       categoryShape: rows[idx].categoryShape,
       topPType: rows[idx].topPType,
       label: rows[idx].label,
-      doorPanelSize: rows[idx].doorPanelSize
+      doorPanelSize: rows[idx].doorPanelSize,
+       dividerForDoor: rows[idx].dividerForDoor
     }
 
     setRows(rowss)

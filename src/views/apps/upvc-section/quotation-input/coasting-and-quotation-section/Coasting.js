@@ -395,9 +395,10 @@ const Coasting = () => {
                   if (i.subCategoryName === 'PROFILE') {
 
                     // Openabalbe  door Panal (labari) 
-                    // Door Panel 100 || Door Panel 150   
+                    // Door Panel 100 || Door Panel 150  
+
                     if (i.id === 3436 || i.id === 3697) {
-                      const JustToCalQ = InputValues.map((data, index) => {
+                      InputValues.forEach((data, index) => {
                         if (i.id === InputValues[index].doorPanelSize) {
                           const pQ = (((InputValues[index].height / 304.8) * (InputValues[index].numberOfOpenablePanels === 2 && InputValues[index].numberOfFixedPanels === 1 ? InputValues[index].numberOfOpenablePanels : (InputValues[index].numberOfOpenablePanels - 1))) / (i.length) * 19 * InputValues[index].qty)
                           let CountNumberOfPanelsForSashWidth = 0
@@ -417,8 +418,10 @@ const Coasting = () => {
                           LamberiArea = (LamberiArea / 304.8) / i.length
                           if (InputValues[index]?.numberOfOpenablePanels > 0) {
                             estQty = estQty + ((InputValues[index]?.windowType === "DOOR" || InputValues[index]?.windowType === "DDOOR" || InputValues[index].windowType === "FDDOOR") && InputValues[index].dividerForDoor === 1 ? LamberiArea : 0)
-                            console.log('PANEL IN', estQty * i.upvcrate, estQty)
+                            console.log('PANEL IN - ', x, ":::::::", estQty * i.upvcrate, estQty)
                             totalOfCoastingArray[707] = estQty * i.upvcrate
+                          } else {
+                            estQty += 0
                           }
                         }
                       })
@@ -1611,9 +1614,16 @@ const Coasting = () => {
                       if (i.id === 3530) {
                         InputValues.forEach((data, index) => {
                           const pQ = (((((InputValues[index].width) * (InputValues[index].height)) / 92900) / 2) * InputValues[index].qty)
-                          estQty += pQ
-                          rate = i.upvcrate
+
+                          if (InputValues[index].slidingPanels > 0) {
+                            estQty += pQ
+                          } else {
+                            estQty += 0
+                          }
+
                         })
+
+                        rate = i.upvcrate
                         if (estQty === undefined) {
                           estQty = 0
                         }
@@ -2958,15 +2968,16 @@ const Coasting = () => {
                           const pQ = ((InputValues[index].numberOfOpenablePanels) * (InputValues[index].mullion.numberOfMullians * 2)) * InputValues[index].qty
                           const connectorForDoorDivider = (InputValues[index].dividerForDoor * 2) * InputValues[index].qty
                           if (InputValues[index].mullion.type === 'No') {
+                            console.log('MULLION::CCC::', estQty, pQ, connectorForDoorDivider)
                             estQty = estQty + connectorForDoorDivider + (InputValues[index].slidingPanels > 0 ? 0 : (InputValues[index].totalNumberOfPanels - 1) * 2)
-                         
+
                           } else {
                             console.log('MULLION::CCC::', estQty, pQ, connectorForDoorDivider)
                             estQty = estQty + connectorForDoorDivider + pQ + (InputValues[index].slidingPanels > 0 ? 0 : (InputValues[index].totalNumberOfPanels - 1) * 2)
-                           
+
                           }
                         })
-                       
+
                         rate = i.upvcrate
 
                         if (estQty === undefined) {
@@ -3328,10 +3339,16 @@ const Coasting = () => {
                         let pQ = 0
 
                         pQ = (((((InputValues[index].width) * (InputValues[index].heightTopHung)) / 92900)) * InputValues[index].qty)
-                        estQty = Math.ceil(pQ)
-                        rate = i.upvcrate
-                      })
 
+                        if (InputValues[index].slidingTopHungs > 0) {
+                          estQty += pQ
+                        } else {
+                          estQty += 0
+                        }
+
+                      })
+                      estQty = Math.ceil(pQ)
+                      rate = i.upvcrate
                       if (estQty === undefined) {
                         estQty = 0
                       }
@@ -3940,11 +3957,15 @@ const Coasting = () => {
                       InputValues.forEach((data, index) => {
                         let pQ = 0
                         pQ = (((((InputValues[index].width) * (InputValues[index].heightTopHung)) / 92900) / 2) * InputValues[index].qty)
-                        estQty = pQ
 
-                        rate = i.upvcrate
+                        if (InputValues[index].slidingTopHungs > 0) {
+                          estQty += pQ
+                        } else {
+                          estQty += 0
+                        }
+
                       })
-
+                      rate = i.upvcrate
                       if (estQty === undefined) {
                         estQty = 0
                       }
