@@ -201,21 +201,26 @@ const MultipleItemRateList = () => {
             </div>
           </div>)}
         <div className="form-row">
-          <div className="form-group col-md-9">
-          <Button color='danger' onClick={() => {   
+          <div className="form-group col-md-8">
+          {/* <Button color='danger' onClick={() => {   
+            generatePDF(filterName)
+            }} >PDF</Button> */}
+          </div>
+       
+          <div className="form-group col-md-3" style={{
+            paddingLeft: 30
+          }}><Button color='primary' onClick={() => {
+            history.push('/BPC/apps/allot-and-inventory-section/update-item-rates')
+          }} >  Edit </Button>
+          &nbsp; &nbsp; &nbsp;
+            <Button color='danger' onClick={() => {   
             generatePDF(filterName)
             }} >PDF</Button>
           </div>
           <div className="form-group col-md-1">
             <Button color='primary' onClick={() => {
               history.push('/BPC/apps/allot-and-inventory-section/add')
-            }} >Add Item</Button>
-          </div>
-          <div className="form-group col-md-2" style={{
-            paddingLeft: 30
-          }}><Button color='primary' onClick={() => {
-            history.push('/BPC/apps/allot-and-inventory-section/update-item-rates')
-          }} >  Update Rates</Button>
+            }} >Add Item</Button> 
           </div>
         </div>
         {/*  */}

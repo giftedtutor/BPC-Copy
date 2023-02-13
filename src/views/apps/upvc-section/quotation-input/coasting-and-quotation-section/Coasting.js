@@ -414,11 +414,13 @@ const Coasting = () => {
                           if (InputValues[index].cFourthPanel?.Type === "Openable" || InputValues[index].cFourthPanel?.Type === "Sliding") {
                             CountNumberOfPanelsForSashWidth += Number(InputValues[index].cFourthPanel?.customPanelWidth)
                           }
-                          let LamberiArea = ((InputValues[index].windowType === "FDDOOR" || InputValues[index].windowType === "DDOOR" || InputValues[index].windowType === "DOOR") ? ((CountNumberOfPanelsForSashWidth / (InputValues[index].doorPanelSize === 3436 ? 100 : 150)) * InputValues[index].sashHeight) : 0) * InputValues[index].qty
+                          console.log('PANEL IN - ', x, ":::::::", CountNumberOfPanelsForSashWidth)
+                          // CountNumberOfPanelsForSashWidth, this should be used instead of simple width
+                          let LamberiArea = ((InputValues[index].windowType === "FDDOOR" || InputValues[index].windowType === "DDOOR" || InputValues[index].windowType === "DOOR") ? ((InputValues[index].width / (InputValues[index].doorPanelSize === 3436 ? 100 : 150)) * InputValues[index].sashHeight) : 0) * InputValues[index].qty
                           LamberiArea = (LamberiArea / 304.8) / i.length
                           if (InputValues[index]?.numberOfOpenablePanels > 0) {
                             estQty = estQty + ((InputValues[index]?.windowType === "DOOR" || InputValues[index]?.windowType === "DDOOR" || InputValues[index].windowType === "FDDOOR") && InputValues[index].dividerForDoor === 1 ? LamberiArea : 0)
-                            console.log('PANEL IN - ', x, ":::::::", estQty * i.upvcrate, estQty)
+
                             totalOfCoastingArray[707] = estQty * i.upvcrate
                           } else {
                             estQty += 0

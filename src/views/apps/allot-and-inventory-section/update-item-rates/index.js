@@ -38,6 +38,7 @@ const UpdateItemRates = () => {
   const [GetNonAlotMachines, setGetNonAlotMachines] = useState([])
   const [machineID, setmachineID] = useState()
   const [RateArray, setRateArray] = useState([])
+  const localNameArray = []
 
   const [SubCategoryID, setSubCategoryID] = useState('')
   const [CategoryID, setCategoryID] = useState('')
@@ -66,7 +67,7 @@ const UpdateItemRates = () => {
   const getItems = (val) => {
     Axios.get(`${baseURL}/ListingcatSubItems?catId=${CategoryID}&&subcatId=${val}`)
       .then(response => {
-        const filterArray = response.data.items.map(({ id, upvcrate, categoryID, subCategoryID, name }) => ({ id, upvcrate, categoryID, subCategoryID, name }))
+        const filterArray = response.data.items.map(({ id, upvcrate, categoryID, subCategoryID, name, localName }) => ({ id, upvcrate, categoryID, subCategoryID, name, localName }))
 
         sendNotItemArray(response.data.items)
         setRows(filterArray)
@@ -76,7 +77,7 @@ const UpdateItemRates = () => {
 
   const postData = () => {
     setIsButtonDisabled(true)
-    const rowsToSend = filterNameWithName.map(({ id, upvcrate, categoryID, subCategoryID }) => ({ id, upvcrate, categoryID, subCategoryID }))
+    const rowsToSend = filterNameWithName.map(({ id, upvcrate, categoryID, subCategoryID, localName }) => ({ id, upvcrate, categoryID, subCategoryID, localName }))
     if (CategoryID === '') {
       toast('Please Select a Project!')
     } else if (CategoryID !== '') {
@@ -119,8 +120,25 @@ const UpdateItemRates = () => {
       id: filterNameWithName[idx].id,
       categoryID: CategoryID,
       subCategoryID: SubCategoryID,
+      name:   <th scope="col">Item</th>,
+      upvcrate: value,
+      localName: filterNameWithName[idx].localName
+    }
+    setRows(rowss)
+
+  }
+
+  const handleChange2 = idx => e => {
+    const { name, value } = e.target
+    localNameArray[idx] = value
+    const rowss = [...filterNameWithName]
+    rowss[idx] = {
+      id: filterNameWithName[idx].id,
+      categoryID: CategoryID,
+      subCategoryID: SubCategoryID,
       name: filterNameWithName[idx].name,
-      upvcrate: value
+      upvcrate: RateArray[idx] === undefined ? filterNameWithName[idx].upvcrate : RateArray[idx],
+      localName: value
     }
     setRows(rowss)
 
@@ -256,6 +274,7 @@ const UpdateItemRates = () => {
               <thead>
                 <tr>
                   <th scope="col">Item</th>
+                  <th scope="col">Local Name</th>
                   <th scope="col">Rate</th>
 
                 </tr>
@@ -269,6 +288,11 @@ const UpdateItemRates = () => {
                       <input type="text" className="form-control" placeholder="Item Name" value={cat?.name}
                         style={{ textTransform: 'capitalize' }} onFocus={(e) => e.target.select()} disabled
                       />
+                    </td>
+                    <td>
+                      <input type="text" className="form-control" placeholder="Local Name" value={cat.localName}
+                        style={{ width: 250 }} onFocus={(e) => e.target.select()}
+                        onChange={handleChange2(idx)} />
                     </td>
                     <td>
                       <input type="Number" className="form-control" placeholder="Rate" value={cat.upvcrate}
